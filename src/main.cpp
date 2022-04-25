@@ -30,10 +30,7 @@ int btnReleased(int id)
 
 void setup()
 {
-  // put your setup code here, to run once:
-  Serial.begin(115200);
-
-  // Initialize Joystick Library
+  // Serial.begin(115200);
   Joystick.begin();
 }
 
@@ -104,12 +101,6 @@ void mapButtonToJoy(int changedBtn, int pressed)
   {
     Joystick.setHatSwitch(act.id, getHatAngle(act.id));
   }
-
-  // left
-  // 7  -> 0
-  // 6 -> 90
-  // 5 -> 180
-  // 4 -> 270
 }
 
 void loop()
@@ -140,15 +131,15 @@ void loop()
 
           if (btnNewValue == 0)
           {
-            Serial.print(btnIdx);
-            Serial.println(" released!");
+            // Serial.print(btnIdx);
+            // Serial.println(" released!");
             mapButtonToJoy(btnIdx, 0);
           }
 
           if (btnNewValue == MAX_DEBOUNCE)
           {
-            Serial.print(btnIdx);
-            Serial.println(" pressed!");
+            // Serial.print(btnIdx);
+            // Serial.println(" pressed!");
             mapButtonToJoy(btnIdx, 1);
           }
         }
@@ -158,14 +149,5 @@ void loop()
       pinMode(jPin, INPUT_PULLUP);
     }
   }
-
-  // for (int i = 0; i < 16; ++i)
-  // {
-  //   Serial.print(buttons[i]);
-  //   Serial.print(" ");
-  // }
-
-  // Serial.println();
-
   delay(2);
 }
